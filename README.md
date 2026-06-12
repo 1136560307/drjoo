@@ -2,6 +2,16 @@
 
 本项目是基于已确认的俏博士官网原型图、门店素材、证书素材、页面路由与需求清单重构的 React + Vite 版本。
 
+## 在线预览
+
+GitHub Pages 预览地址：
+
+```text
+https://1136560307.github.io/drjoo/
+```
+
+首次启用时，需要进入仓库 `Settings -> Pages`，将 `Build and deployment` 的 `Source` 设置为 `GitHub Actions`。
+
 ## 技术架构
 
 - React + Vite
@@ -10,7 +20,7 @@
 - 数据集中在 `src/data/siteData.js`
 - 组件化结构：Header / Footer / SEO / LeadForm / SectionTitle / CTA / Accordion
 - 适配 PC、平板、手机
-- 支持 Vercel / Netlify / 宝塔 / Nginx 静态部署
+- 支持 GitHub Pages / Vercel / Netlify / 宝塔 / Nginx 静态部署
 
 ## 目录说明
 
@@ -23,7 +33,9 @@ src/
   App.jsx            路由表
   main.jsx           React 入口
   styles.css         全站视觉样式
+  home-upgrade.css   首页优化样式
 public/assets/       图片素材
+.github/workflows/   GitHub Pages 自动部署流程
 ```
 
 ## 本地运行
@@ -46,9 +58,25 @@ npm run preview
 dist/
 ```
 
-## 部署说明
+## GitHub Pages 部署说明
 
-如果使用 BrowserRouter，静态服务器需要把所有路径回退到 `index.html`。
+本项目已添加：
+
+- `vite.config.js`：配置 `base: '/drjoo/'`
+- `.github/workflows/deploy.yml`：推送 main 后自动构建并部署到 GitHub Pages
+- `src/main.jsx`：根据 Vite `BASE_URL` 自动设置 React Router `basename`
+- 构建时会复制 `dist/index.html` 为 `dist/404.html`，用于 GitHub Pages SPA 路由回退
+
+部署成功后访问：
+
+```text
+https://1136560307.github.io/drjoo/
+```
+
+## 其他部署说明
+
+如果部署到 Vercel / Netlify / 宝塔 / Nginx，静态服务器需要把所有路径回退到 `index.html`。
+
 本项目已提供：
 
 - `vercel.json`
@@ -71,6 +99,7 @@ try_files $uri $uri/ /index.html;
 6. 全站 SEO title / description 可单独设置。
 7. 移动端导航、响应式卡片和图片适配已配置。
 8. 路由覆盖：首页、关于、科研实力、产品、单品、套盒、门店形象、AI赋能、加盟、案例、新闻、FAQ、联系。
+9. 已配置 GitHub Pages 在线预览部署流程。
 
 ## 注意事项
 
