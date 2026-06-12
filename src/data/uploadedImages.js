@@ -1,0 +1,1 @@
+export const heroStoreImage = 'data:image/webp;base64,UklGRjxJAQBXRUJQVlA4IDBJ...';
