@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import HomeOfficial from './pages/HomeOfficial';
 import About from './pages/About';
 import BrandStrength from './pages/BrandStrength';
 import Products from './pages/Products';
@@ -19,7 +20,8 @@ export default function App() {
   return (
     <Layout>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomeOfficial />} />
+        <Route path="/home-old" element={<Home />} />
         <Route path="/about_drjoo" element={<About />} />
         <Route path="/brand-strength" element={<BrandStrength />} />
         <Route path="/products" element={<Products />} />
