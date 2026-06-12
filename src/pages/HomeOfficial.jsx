@@ -3,7 +3,7 @@ import { ArrowRight, Building2, ClipboardCheck, Handshake, PackageCheck, ShieldC
 import LeadForm from '../components/LeadForm';
 import ProductPosterCarousel from '../components/ProductPosterCarousel';
 import SectionTitle from '../components/SectionTitle';
-import { careSteps, certificates, featuredProductPosters, heroStats, kitProductPosters, productLoopItems, proofCards, storeZones, trustCards } from '../data/siteData';
+import { asset, careSteps, certificates, featuredProductPosters, heroStats, kitProductPosters, productLoopItems, proofCards, storeZones, trustCards } from '../data/siteData';
 import '../home-upgrade.css';
 
 function ArrowButton({ to, children, variant = 'primary' }) {
@@ -35,9 +35,9 @@ function Hero() {
         <div className="hero-actions"><ArrowButton to="/products">查看院线产品</ArrowButton><ArrowButton to="/franchise" variant="ghost">了解合作模式</ArrowButton></div>
         <div className="official-hero-proof">{proofItems.map(([title, text, Icon]) => <article className="official-proof-card" key={title}><span><Icon size={21} strokeWidth={1.45} /></span><div><strong>{title}</strong><p>{text}</p></div></article>)}</div>
       </div>
-      <div className="official-hero-stage">
-        <ProductPosterCarousel items={kitProductPosters} label="院线套盒产品展示" auto autoDirection="right" interval={3000} />
-        <div className="official-floating-card"><strong>院线护理产品矩阵</strong><span>白发养护 · 防断强韧 · 头皮臻养</span></div>
+      <div className="official-hero-stage official-store-hero-stage">
+        <img className="official-hero-store-image" src={asset('hero-store-fade-bottom.webp')} alt="俏博士白发脱发中心门店形象" />
+        <div className="official-floating-card"><strong>真实门店形象</strong><span>门头识别 · 咨询接待 · 护理体验</span></div>
       </div>
     </div>
     <div className="container home-stat-band official-stat-band">{stats.map(([Icon, value, label]) => <article className="home-stat-card" key={label}><span className="home-stat-icon"><Icon size={25} strokeWidth={1.35} /></span><strong>{value}</strong><span>{label}</span></article>)}</div>
@@ -50,7 +50,7 @@ function TrustSection() {
 }
 
 function ProductFocus() {
-  return <section className="section official-product-focus"><div className="container"><SectionTitle centered eyebrow="PROFESSIONAL KITS" title="三大院线套盒，承接<span>到店护理体验</span>" desc="围绕白发养护、防断强韧、头皮臻养等核心护理场景，俏博士以院线套盒建立专业体验入口，并通过居家巩固产品延伸长期护理认知。" /><ProductPosterCarousel items={kitProductPosters} label="三大院线套盒产品轮播" auto autoDirection="right" interval={3200} /><div className="center-actions official-center-actions"><ArrowButton to="/all-product/27taohe/">查看院线套盒</ArrowButton><ArrowButton to="/products" variant="ghost">探索全部产品</ArrowButton></div></div></section>;
+  return <section className="section official-product-focus"><div className="container"><SectionTitle centered eyebrow="PROFESSIONAL KITS" title="三大院线套盒，承接<span>到店护理体验</span>" desc="围绕白发养护、防断强韧、头皮臻养等核心护理场景，俏博士以院线套盒建立专业体验入口，并通过居家巩固产品延伸长期护理认知。" /><ProductPosterCarousel items={kitProductPosters} label="三大院线套盒产品轮播" auto autoDirection="right" interval={3200} variant="kit" /><div className="center-actions official-center-actions"><ArrowButton to="/all-product/27taohe/">查看院线套盒</ArrowButton><ArrowButton to="/products" variant="ghost">探索全部产品</ArrowButton></div></div></section>;
 }
 
 function ProductLoop() {
@@ -76,7 +76,7 @@ function PartnerFit() {
 }
 
 function ProductPosters() {
-  return <section className="section poster-showcase-section official-poster-section"><div className="container"><SectionTitle eyebrow="PRODUCT POSTERS" title="以真实产品海报呈现<span>护理产品矩阵</span>" desc="通过套盒、精华、洗护产品海报展示产品定位、规格与护理场景，让访问者更直观理解俏博士产品体系。" /><ProductPosterCarousel items={featuredProductPosters} /></div></section>;
+  return <section className="section poster-showcase-section official-poster-section"><div className="container"><SectionTitle eyebrow="PRODUCT POSTERS" title="产品列表缩小展示，横向<span>自动滚动</span>" desc="通过更轻量的产品卡片展示套盒、精华、洗护产品定位与规格，保留官网高级感，不做成拥挤的电商详情页。" /><ProductPosterCarousel items={featuredProductPosters} label="产品列表轮播" auto autoDirection="right" interval={3600} variant="compact" /></div></section>;
 }
 
 function BrandProof() {
