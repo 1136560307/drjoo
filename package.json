@@ -1,0 +1,20 @@
+{
+  "name": "drjoo-react-corporate-site",
+  "version": "2.0.0",
+  "private": true,
+  "description": "DR.JOO 俏博士企业官网 React + Vite 深度优化版",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "lucide-react": "^1.17.0",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "vite": "^8.0.16"
+  }
+}
