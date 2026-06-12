@@ -12,32 +12,17 @@ import {
   Palette,
   RefreshCw,
   ShieldCheck,
-  Sparkles,
   Store,
-  UserRound,
 } from 'lucide-react';
 import LeadForm from '../components/LeadForm';
 import ProductPosterCarousel from '../components/ProductPosterCarousel';
 import SectionTitle from '../components/SectionTitle';
-import { asset, careSteps, certificates, featuredProductPosters, heroStats, kitProductPosters, proofCards, storeZones } from '../data/siteData';
+import { asset, careSteps, certificates, featuredProductPosters, kitProductPosters, proofCards, storeZones } from '../data/siteData';
 import '../home-upgrade.css';
 
 function ArrowButton({ to, children, variant = 'primary' }) {
   return <Link to={to} className={`btn ${variant}`}><span>{children}</span><span className="btn-icon"><ArrowRight size={18} strokeWidth={1.8} /></span></Link>;
 }
-
-const proofItems = [
-  ['东方草本智慧', '以东方草本养护理念，建立更容易理解的护理记忆。', Sparkles],
-  ['现代头皮科技', '围绕头皮状态评估、产品资料与护理路径，呈现专业服务体系。', ClipboardCheck],
-  ['品质资料背书', '以产品资料、门店实景与品牌荣誉共同构建信任基础。', ShieldCheck],
-];
-
-const stats = [
-  [Store, '10年+', '美业连锁沉淀'],
-  [UserRound, '500+', '过往体系门店经验'],
-  [ShieldCheck, '3项', '品牌荣誉与文化背书'],
-  [PackageCheck, '8项', '品牌支持体系'],
-];
 
 const officialTrustCards = [
   ['白发脱发专项定位', '聚焦白发、脱发、头油头屑、发丝脆弱等常见头皮毛发困扰，围绕消费者真实需求建立品牌服务方向。'],
@@ -66,7 +51,7 @@ const supportItemsOfficial = [
 const supportIcons = [Store, PackageCheck, CalendarCheck, MapPinned, Palette, Megaphone, RefreshCw, GraduationCap];
 
 function Hero() {
-  return <section className="home-hero official-hero">
+  return <section className="home-hero official-hero compact-hero">
     <div className="hero-ambient" aria-hidden="true" />
     <div className="container official-hero-layout">
       <div className="official-hero-copy reveal-stack">
@@ -75,15 +60,11 @@ function Hero() {
         <p className="hero-value-line">东方草本智慧 × 现代头皮科技</p>
         <p className="hero-sub official-hero-sub">俏博士以头皮状态评估为起点，围绕白发、脱发、头油头屑、发丝脆弱等常见护理需求，构建从院线护理体验到居家巩固管理的系统化养护路径。</p>
         <div className="hero-actions"><ArrowButton to="/products">查看院线产品</ArrowButton><ArrowButton to="/franchise" variant="ghost">了解合作模式</ArrowButton></div>
-        <div className="official-hero-proof">{proofItems.map(([title, text, Icon]) => <article className="official-proof-card" key={title}><span><Icon size={21} strokeWidth={1.45} /></span><div><strong>{title}</strong><p>{text}</p></div></article>)}</div>
       </div>
       <div className="official-hero-stage official-store-hero-stage">
         <img className="official-hero-store-image" src={asset('hero-store-fade-bottom.webp')} alt="俏博士白发脱发中心门店形象" />
-        <div className="official-floating-card"><strong>真实门店形象</strong><span>门头识别 · 咨询接待 · 护理体验</span></div>
       </div>
     </div>
-    <div className="container home-stat-band official-stat-band">{stats.map(([Icon, value, label]) => <article className="home-stat-card" key={label}><span className="home-stat-icon"><Icon size={25} strokeWidth={1.35} /></span><strong>{value}</strong><span>{label}</span></article>)}</div>
-    <div className="container evidence-strip home-evidence-strip official-evidence-strip">{heroStats.map((stat) => <article className="evidence-pill" key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span><p>{stat.note}</p></article>)}</div>
   </section>;
 }
 
