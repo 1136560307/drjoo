@@ -51,17 +51,18 @@ const supportItemsOfficial = [
 const supportIcons = [Store, PackageCheck, CalendarCheck, MapPinned, Palette, Megaphone, RefreshCw, GraduationCap];
 
 function Hero() {
-  return <section className="home-hero official-hero compact-hero">
+  return <section className="home-hero official-hero compact-hero layered-hero">
     <div className="hero-ambient" aria-hidden="true" />
     <div className="container official-hero-layout">
       <div className="official-hero-copy reveal-stack">
-        <div className="hero-pill"><ShieldCheck size={16} strokeWidth={1.45} /><span>DR.JOO 俏博士｜白发脱发中心</span></div>
-        <h1><span className="hero-title-main">科学白发养护专家</span><span className="hero-title-accent">专注白发脱发研究与服务</span></h1>
+        <h1><span className="hero-title-accent">专注白发脱发</span><span className="hero-title-main">研究与服务</span></h1>
         <p className="hero-value-line">东方草本智慧 × 现代头皮科技</p>
         <p className="hero-sub official-hero-sub">俏博士以头皮状态评估为起点，围绕白发、脱发、头油头屑、发丝脆弱等常见护理需求，构建从院线护理体验到居家巩固管理的系统化养护路径。</p>
         <div className="hero-actions"><ArrowButton to="/products">查看院线产品</ArrowButton><ArrowButton to="/franchise" variant="ghost">了解合作模式</ArrowButton></div>
       </div>
-      <div className="official-hero-stage official-store-hero-stage">
+      <div className="official-hero-stage official-store-hero-stage layered-store-stage" aria-label="俏博士门店形象展示">
+        <span className="store-layer store-layer-back" aria-hidden="true" />
+        <span className="store-layer store-layer-mid" aria-hidden="true" />
         <img className="official-hero-store-image" src={asset('hero-store-fade-bottom.webp')} alt="俏博士白发脱发中心门店形象" />
       </div>
     </div>
