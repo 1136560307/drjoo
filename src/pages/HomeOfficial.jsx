@@ -1,0 +1,92 @@
+import { Link } from 'react-router-dom';
+import { ArrowRight, Building2, ClipboardCheck, Handshake, PackageCheck, ShieldCheck, Sparkles, Store, UserRound } from 'lucide-react';
+import LeadForm from '../components/LeadForm';
+import ProductPosterCarousel from '../components/ProductPosterCarousel';
+import SectionTitle from '../components/SectionTitle';
+import { careSteps, certificates, featuredProductPosters, heroStats, kitProductPosters, productLoopItems, proofCards, storeZones, trustCards } from '../data/siteData';
+import '../home-upgrade.css';
+
+function ArrowButton({ to, children, variant = 'primary' }) {
+  return <Link to={to} className={`btn ${variant}`}><span>{children}</span><span className="btn-icon"><ArrowRight size={18} strokeWidth={1.8} /></span></Link>;
+}
+
+const proofItems = [
+  ['东方草本智慧', '以东方草本养护理念，建立更容易理解的护理记忆。', Sparkles],
+  ['现代头皮科技', '围绕头皮状态评估、产品资料与护理路径，呈现专业服务体系。', ClipboardCheck],
+  ['品质资料背书', '以产品资料、门店实景与品牌荣誉共同构建信任基础。', ShieldCheck],
+];
+
+const stats = [
+  [Store, '10年+', '美业连锁沉淀'],
+  [UserRound, '500+', '过往体系门店经验'],
+  [ShieldCheck, '3项', '品牌荣誉与文化背书'],
+  [PackageCheck, '8项', '品牌支持体系'],
+];
+
+function Hero() {
+  return <section className="home-hero official-hero">
+    <div className="hero-ambient" aria-hidden="true" />
+    <div className="container official-hero-layout">
+      <div className="official-hero-copy reveal-stack">
+        <div className="hero-pill"><ShieldCheck size={16} strokeWidth={1.45} /><span>DR.JOO 俏博士｜白发脱发中心</span></div>
+        <h1><span className="hero-title-main">科学白发养护专家</span><span className="hero-title-accent">专注白发脱发研究与服务</span></h1>
+        <p className="hero-value-line">东方草本智慧 × 现代头皮科技</p>
+        <p className="hero-sub official-hero-sub">俏博士以头皮状态评估为起点，围绕白发、脱发、头油头屑、发丝脆弱等常见护理需求，构建从院线护理体验到居家巩固管理的系统化养护路径。</p>
+        <div className="hero-actions"><ArrowButton to="/products">查看院线产品</ArrowButton><ArrowButton to="/franchise" variant="ghost">了解合作模式</ArrowButton></div>
+        <div className="official-hero-proof">{proofItems.map(([title, text, Icon]) => <article className="official-proof-card" key={title}><span><Icon size={21} strokeWidth={1.45} /></span><div><strong>{title}</strong><p>{text}</p></div></article>)}</div>
+      </div>
+      <div className="official-hero-stage">
+        <ProductPosterCarousel items={kitProductPosters} label="院线套盒产品展示" auto autoDirection="right" interval={3000} />
+        <div className="official-floating-card"><strong>院线护理产品矩阵</strong><span>白发养护 · 防断强韧 · 头皮臻养</span></div>
+      </div>
+    </div>
+    <div className="container home-stat-band official-stat-band">{stats.map(([Icon, value, label]) => <article className="home-stat-card" key={label}><span className="home-stat-icon"><Icon size={25} strokeWidth={1.35} /></span><strong>{value}</strong><span>{label}</span></article>)}</div>
+    <div className="container evidence-strip home-evidence-strip official-evidence-strip">{heroStats.map((stat) => <article className="evidence-pill" key={stat.label}><strong>{stat.value}</strong><span>{stat.label}</span><p>{stat.note}</p></article>)}</div>
+  </section>;
+}
+
+function TrustSection() {
+  return <section className="section surface-section official-section-clean"><div className="container"><SectionTitle eyebrow="BRAND TRUST" title="以专业品牌系统，重新定义<span>白发脱发护理体验</span>" desc="俏博士围绕品牌形象、产品体系、门店空间、护理流程与顾客体验进行系统建设，让白发脱发护理从单一产品展示，升级为更完整的专业服务场景。" /><div className="premium-grid trust-grid-v2 official-trust-grid">{trustCards.map((card, index) => <article className="premium-card" key={card.title}><span className="card-kicker">0{index + 1}</span><h3>{card.title}</h3><p>{card.text}</p></article>)}</div></div></section>;
+}
+
+function ProductFocus() {
+  return <section className="section official-product-focus"><div className="container"><SectionTitle centered eyebrow="PROFESSIONAL KITS" title="三大院线套盒，承接<span>到店护理体验</span>" desc="围绕白发养护、防断强韧、头皮臻养等核心护理场景，俏博士以院线套盒建立专业体验入口，并通过居家巩固产品延伸长期护理认知。" /><ProductPosterCarousel items={kitProductPosters} label="三大院线套盒产品轮播" auto autoDirection="right" interval={3200} /><div className="center-actions official-center-actions"><ArrowButton to="/all-product/27taohe/">查看院线套盒</ArrowButton><ArrowButton to="/products" variant="ghost">探索全部产品</ArrowButton></div></div></section>;
+}
+
+function ProductLoop() {
+  return <section className="section surface-section product-loop-official"><div className="container product-loop-layout-official"><div><SectionTitle eyebrow="PRODUCT SYSTEM" title="从院线护理到居家巩固，形成<span>产品服务闭环</span>" desc="俏博士产品体系不是简单的单品陈列，而是围绕护理场景建立的系统组合。院线套盒承接到店体验，居家单品承接日常巩固，洗护产品承接高频使用场景。" /><ArrowButton to="/products">了解产品体系</ArrowButton></div><div className="product-loop-grid">{productLoopItems.map((item) => <article className="product-loop-card" key={item.title}><div className="product-loop-image"><img src={item.image} alt={item.title} /></div><h3>{item.title}</h3><p>{item.text}</p></article>)}</div></div></section>;
+}
+
+function CarePath() {
+  return <section className="section care-path-section official-care-path"><div className="container care-path-layout"><div><SectionTitle eyebrow="SCALP CARE SYSTEM" title="从头皮状态评估，到<span>长期养护管理</span>" desc="俏博士强调温和、持续、可理解的护理方式，将头皮状态评估、定制护理建议、院线护理体验和居家巩固管理连接成一套完整路径。" /><ArrowButton to="/project">查看门店服务场景</ArrowButton></div><div className="care-path-grid">{careSteps.map((step) => <article className="process-card" key={step.no}><b>{step.no}</b><h3>{step.title}</h3><p>{step.text}</p></article>)}</div></div></section>;
+}
+
+function StoreProof() {
+  return <section className="section official-store-section"><div className="container"><SectionTitle centered eyebrow="STORE IMAGE" title="让顾客一眼感受到<span>专业与信任</span>" desc="俏博士门店围绕“白发脱发中心”的清晰定位，统一门头识别、咨询空间、护理区域与产品陈列，呈现更具辨识度的品牌体验。" /><div className="store-grid-v2 official-store-grid">{storeZones.map((zone) => <article className="store-proof-card" key={zone.title}><img src={zone.image} alt={zone.title} /><div><h3>{zone.title}</h3><p>{zone.text}</p></div></article>)}</div><div className="proof-row official-proof-row">{proofCards.map((card) => <article className="proof-card" key={card.title}><ClipboardCheck size={24} strokeWidth={1.55} /><h3>{card.title}</h3><p>{card.text}</p></article>)}</div></div></section>;
+}
+
+function PartnerFit() {
+  const partners = [
+    ['美容院 / 皮肤管理门店', '适合已有顾客基础，希望增加头皮护理、白发脱发管理等新增服务场景的门店。'],
+    ['养发馆 / 头皮管理门店', '适合希望升级品牌形象、完善产品体系、提升专业表达与内容传播能力的养发类门店。'],
+    ['祛痘门店 / 美业连锁门店', '适合拥有本地客群与服务团队，希望导入白发脱发项目，丰富顾客服务周期的门店。'],
+    ['新创业者', '适合看好头皮毛发护理长期需求，希望依托品牌形象、产品体系与服务模型进入赛道的人群。'],
+  ];
+  return <section className="section partner-section official-partner-section"><div className="container"><SectionTitle centered eyebrow="FRANCHISE MODEL" title="选择适合你的<span>俏博士合作路径</span>" desc="无论是独立打造白发脱发中心，还是在现有门店中导入新项目，俏博士都可以根据门店基础匹配合作方式。" /><div className="partner-grid official-partner-grid">{partners.map(([title, text]) => <article className="partner-card" key={title}><span className="partner-icon"><Building2 size={25} strokeWidth={1.55} /></span><h3>{title}</h3><p>{text}</p></article>)}</div></div></section>;
+}
+
+function ProductPosters() {
+  return <section className="section poster-showcase-section official-poster-section"><div className="container"><SectionTitle eyebrow="PRODUCT POSTERS" title="以真实产品海报呈现<span>护理产品矩阵</span>" desc="通过套盒、精华、洗护产品海报展示产品定位、规格与护理场景，让访问者更直观理解俏博士产品体系。" /><ProductPosterCarousel items={featuredProductPosters} /></div></section>;
+}
+
+function BrandProof() {
+  return <section className="section official-brand-proof"><div className="container"><SectionTitle centered eyebrow="BRAND PROOF" title="看得见的<span>品牌实力</span>" desc="品牌荣誉、门店实景、产品资料与服务体系，共同构成俏博士可展示、可理解、可传播的品牌信任基础。" /><div className="cert-grid cert-grid-featured official-cert-grid">{certificates.map((cert) => <article key={cert.title} className="cert-card"><img src={cert.image} alt={cert.title} /><h3>{cert.title}</h3></article>)}</div></div></section>;
+}
+
+function ContactBlock() {
+  return <section className="section contact-section official-contact-section" id="contact"><div className="container contact-layout"><div className="contact-copy"><SectionTitle eyebrow="CONTACT" title="获取俏博士<span>品牌资料</span>" desc="提交姓名、手机、城市和咨询需求，品牌顾问将提供品牌介绍、产品资料、门店合作模式与城市合作政策说明。" /><div className="contact-points"><span><Handshake size={17} /> 合作模式说明</span><span><PackageCheck size={17} /> 产品资料获取</span><span><ShieldCheck size={17} /> 城市政策咨询</span></div></div><div className="consult-card"><LeadForm title="联系品牌顾问" /></div></div></section>;
+}
+
+export default function HomeOfficial() {
+  return <><Hero /><TrustSection /><ProductFocus /><ProductLoop /><CarePath /><StoreProof /><PartnerFit /><ProductPosters /><BrandProof /><ContactBlock /></>;
+}
