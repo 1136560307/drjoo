@@ -18,6 +18,7 @@ import LeadForm from '../components/LeadForm';
 import ProductPosterCarousel from '../components/ProductPosterCarousel';
 import SectionTitle from '../components/SectionTitle';
 import { asset, careSteps, certificates, featuredProductPosters, kitProductPosters, proofCards, storeZones } from '../data/siteData';
+import { patentCarouselItems } from '../data/patentData';
 import '../home-upgrade.css';
 
 function ArrowButton({ to, children, variant = 'primary' }) {
@@ -74,11 +75,15 @@ function TrustSection() {
 }
 
 function ProductFocus() {
-  return <section className="section official-product-focus"><div className="container"><SectionTitle centered eyebrow="PROFESSIONAL KITS" title="三大院线套盒，承接<span>到店护理体验</span>" desc="围绕白发养护、防断强韧、头皮臻养等核心护理场景，俏博士以院线套盒建立专业体验入口，并通过居家巩固产品延伸长期护理认知。" /><ProductPosterCarousel items={kitProductPosters} label="三大院线套盒产品轮播" auto autoDirection="right" interval={3200} variant="kit" /><div className="center-actions official-center-actions"><ArrowButton to="/all-product/27taohe/">查看院线套盒</ArrowButton><ArrowButton to="/products" variant="ghost">探索全部产品</ArrowButton></div></div></section>;
+  return <section className="section official-product-focus unified-showcase-section"><div className="container"><SectionTitle centered eyebrow="PROFESSIONAL KITS" title="三大院线套盒，承接<span>到店护理体验</span>" desc="围绕白发养护、防断强韧、头皮臻养等核心护理场景，俏博士以院线套盒建立专业体验入口，并通过居家巩固产品延伸长期护理认知。" /><ProductPosterCarousel items={kitProductPosters} label="三大院线套盒产品轮播" auto autoDirection="right" interval={3200} variant="unified" /><div className="center-actions official-center-actions"><ArrowButton to="/all-product/27taohe/">查看院线套盒</ArrowButton><ArrowButton to="/products" variant="ghost">探索全部产品</ArrowButton></div></div></section>;
 }
 
 function ProductMatrix() {
-  return <section className="section poster-showcase-section official-poster-section"><div className="container"><SectionTitle eyebrow="PRODUCT MATRIX" title="产品矩阵轻量展示，横向<span>自动滚动</span>" desc="通过更轻量的产品卡片展示套盒、精华、洗护产品定位与规格，保留官网高级感，不做成拥挤的电商详情页。" /><ProductPosterCarousel items={featuredProductPosters} label="产品列表轮播" auto autoDirection="right" interval={3600} variant="compact" /></div></section>;
+  return <section className="section poster-showcase-section official-poster-section unified-showcase-section"><div className="container"><SectionTitle eyebrow="PRODUCT MATRIX" title="产品矩阵轻量展示，横向<span>自动滚动</span>" desc="通过更轻量的产品卡片展示套盒、精华、洗护产品定位与规格，保留官网高级感，不做成拥挤的电商详情页。" /><ProductPosterCarousel items={featuredProductPosters} label="产品列表轮播" auto autoDirection="right" interval={3600} variant="unified" /></div></section>;
+}
+
+function PatentProof() {
+  return <section className="section patent-proof-section unified-showcase-section"><div className="container"><SectionTitle centered eyebrow="PATENT PROOF" title="专利资料展示，聚焦<span>第一页证书</span>" desc="首页只展示专利证书第一页图片，用统一轮播样式呈现品牌研发与资料背书，完整资料可进入品牌实力页面查看。" /><ProductPosterCarousel items={patentCarouselItems} label="专利证书第一页轮播" auto autoDirection="right" interval={3800} variant="unified" /><div className="center-actions official-center-actions"><ArrowButton to="/brand-strength" variant="ghost">查看完整品牌实力</ArrowButton></div></div></section>;
 }
 
 function CarePath() {
@@ -106,5 +111,5 @@ function ContactBlock() {
 }
 
 export default function HomeOfficial() {
-  return <><Hero /><TrustSection /><ProductFocus /><ProductMatrix /><CarePath /><StoreProof /><PartnerFit /><BrandProof /><SupportSystem /><ContactBlock /></>;
+  return <><Hero /><TrustSection /><ProductFocus /><ProductMatrix /><PatentProof /><CarePath /><StoreProof /><PartnerFit /><BrandProof /><SupportSystem /><ContactBlock /></>;
 }
