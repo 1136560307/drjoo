@@ -8,6 +8,44 @@
     <meta name="description" content="俏博士DR.JOO聚焦白发、脱发、头油头屑与发丝脆弱等常见困扰，建立从专业评估、院线护理到居家巩固的系统化头皮毛发护理体验。" />
     <link rel="icon" href="./assets/logo-drjoo.png" />
     <title>俏博士DR.JOO官网｜白发脱发中心与头皮护理品牌</title>
+    <script>
+      (function () {
+        var base = location.pathname.indexOf('/drjoo/') === 0 ? '/drjoo' : '';
+        if (!base) return;
+        function fixed(value) {
+          return typeof value === 'string' && value.indexOf('/assets/') === 0 ? base + value : value;
+        }
+        function fixNode(node) {
+          if (!node || node.nodeType !== 1) return;
+          if (node.tagName === 'IMG') {
+            var src = node.getAttribute('src');
+            var next = fixed(src);
+            if (next !== src) node.setAttribute('src', next);
+          }
+          if (node.tagName === 'A') {
+            var href = node.getAttribute('href');
+            var nextHref = fixed(href);
+            if (nextHref !== href) node.setAttribute('href', nextHref);
+          }
+          if (node.querySelectorAll) {
+            node.querySelectorAll('img[src^="/assets/"],a[href^="/assets/"]').forEach(fixNode);
+          }
+        }
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (mutation) {
+            mutation.addedNodes.forEach(fixNode);
+            if (mutation.type === 'attributes') fixNode(mutation.target);
+          });
+        });
+        observer.observe(document.documentElement, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+          attributeFilter: ['src', 'href']
+        });
+        document.addEventListener('DOMContentLoaded', function () { fixNode(document.body); });
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
